@@ -20,7 +20,7 @@ module ActiveStorage
       @upload_options = upload
     end
 
-    def upload(key, io, checksum: nil, **)
+    def upload(key, io, checksum: nil, content_type: nil, **)
       instrument :upload, key: key, checksum: checksum do
         if io.size < multipart_upload_threshold
           upload_with_single_part key, io, checksum: checksum, content_type: content_type
